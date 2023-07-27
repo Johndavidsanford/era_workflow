@@ -1,0 +1,26 @@
+{
+	"root": {
+		"name": "First node in the decision tree!!!",
+		"next": "universalPatientAssessment",
+        "timestamp": "1979-01-01 00:00:00",
+		"tableOfContents": [
+			"universalPatientAssessment",
+			"assessmentTypes"
+		]
+	},
+	"universalPatientAssessment": {
+		"name": "Universal Patient Assessment",
+		"title": "Universal Patient Assessment",
+		"nodeType": "",
+		"element": {
+			"text": "Safety & BSI (body substance isolation)",
+			"next": "assessmentTypes",
+			"timestamp": null
+		}
+	},
+	"assessmentUniversal": {
+		"adultPrimaryAssessment": {
+			"text": "Quickly assess level of consciousness using the AVPU Method."
+		}
+	}
+}
