@@ -11,9 +11,25 @@ function App() {
     "timestamp": null
   };
   Object.assign(node, workflow.root);
-  console.log(node.tableOfContents);
   return Object.keys(node).map((key) => {
-    return (<h1 key={key}>{key + ":" + node[key]}</h1>)
+    switch(key) {
+      case "title":
+        return (<h1 key={key}>{node[key]}</h1>)
+      case "subtitle":
+        return (<h2 key={key}>{node[key]}</h2>)
+      case "objects":
+        return (Object.keys(node[key]).map((key2) => {
+          switch (node[key][key2].type) {
+            case "label":
+              return (<p key={key2}>{node[key][key2].value}</p>)
+            case "button":
+              return (<input type="button" value={node[key][key2].value} />)
+          }
+        }))
+       default:
+        // code block
+        break;
+    }
   })
 }
 export default App;

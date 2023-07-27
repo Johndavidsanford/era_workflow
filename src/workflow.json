@@ -1,11 +1,16 @@
 {
 	"root": {
-		"name": "First node in the decision tree!!!",
+		"name": "Scene Size-Up",
+		"title": "Universal Patient Assessment",
+		"subtitle": "Scene Size-up",
 		"next": "universalPatientAssessment",
         "timestamp": "1979-01-01 00:00:00",
-		"tableOfContents": [
-			"universalPatientAssessment",
-			"assessmentTypes"
+		"objects": [
+			{"type":"label","value":"1. Don appropriate level of Body Substance Isolation (BSI) precautions."},
+			{"type":"label","value":"2. Assess the scene for dangers to the rescuer."},
+			{"type":"label","value":"3. Consider the number of patients, mechanism of injury or nature of the illness."},
+			{"type":"label","value":"4. Request additional help if necessary."},
+			{"type":"button","value":"Next"}
 		]
 	},
 	"universalPatientAssessment": {
