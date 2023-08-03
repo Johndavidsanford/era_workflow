@@ -1,31 +1,109 @@
 {
-	"root": {
-		"name": "Scene Size-Up",
+	"universalPatientAssessment": {
 		"title": "Universal Patient Assessment",
 		"subtitle": "Scene Size-up",
-		"next": "universalPatientAssessment",
-        "timestamp": "1979-01-01 00:00:00",
+		"nodeType": "display",
+		"next": "adultPrimaryAssessment1",
 		"objects": [
 			{"type":"label","value":"1. Don appropriate level of Body Substance Isolation (BSI) precautions."},
 			{"type":"label","value":"2. Assess the scene for dangers to the rescuer."},
 			{"type":"label","value":"3. Consider the number of patients, mechanism of injury or nature of the illness."},
 			{"type":"label","value":"4. Request additional help if necessary."},
-			{"type":"button","value":"Next"}
+			{"type":"next","value":"Next"}
 		]
 	},
-	"universalPatientAssessment": {
-		"name": "Universal Patient Assessment",
-		"title": "Universal Patient Assessment",
-		"nodeType": "",
-		"element": {
-			"text": "Safety & BSI (body substance isolation)",
-			"next": "assessmentTypes",
-			"timestamp": null
-		}
+	"adultPrimaryAssessment1": {
+		"title": "Adult Primary Assessment",
+		"subtitle": "Initial Assessment 1\/7",
+		"nodeType": "display",
+		"next": "adultPrimaryAssessment2",
+		"objects": [
+			{"type":"label","value":"1. Quickly assess level of consciousness using the AVPU Method."},
+			{"type":"label","value":"A - Alert: Eyes Open"},
+			{"type":"label","value":"V - Verbal: Responds to vocal stimuli"},
+			{"type":"label","value":"P - Pain: Responds only to pain"},
+			{"type":"label","value":"U - Unresponsive: No response to verbal or Painful stimuli"},
+			{"type":"next","value":"Next"}
+		]
 	},
-	"assessmentUniversal": {
-		"adultPrimaryAssessment": {
-			"text": "Quickly assess level of consciousness using the AVPU Method."
-		}
+	"adultPrimaryAssessment2": {
+		"title": "Adult Primary Assessment",
+		"subtitle": "Initial Assessment 2\/7",
+		"nodeType": "display",
+		"next": "adultPrimaryAssessment3",
+		"objects": [
+			{"type":"label","value":"2. Assess the airway (protect c-spine if uncertain)"},
+			{"type":"label","value":"A - Responsive - no intervention needed, proceed to step 3."},
+			{"type":"label","value":"B - If unresponsive - use the appropriate medical or trauma maneuver to open the airway."},
+			{"type":"label","value":"C - If airway remains partially or totally obstructed, continue attempts to clear the airway. (refer to Airway Emergencies)."},
+			{"type":"next","value":"Next"}
+		]
+	},
+	"adultPrimaryAssessment3": {
+		"title": "Adult Primary Assessment",
+		"subtitle": "Initial Assessment 3\/7",
+		"nodeType": "display",
+		"next": "adultPrimaryAssessment4",
+		"objects": [
+			{"type":"label","value":"3. Assess adequacy of breathing"},
+			{"type":"label","value":"A - Observe chest rise and fall, auscultate breath sounds anteriorly, posteriorly and peripherally."},
+			{"type":"label","value":"B - Observe for signs of distress - use of secondary muscles, cyanosis."},
+			{"type":"label","value":"C - Count the respiratory rate and obtain pulse oximeter reading (SpO2) if available."},
+			{"type":"label","value":"D - If breathing adequate - Go to step 4."},
+			{"type":"label","value":"E - If breathing is inadequate and patient is unresponsive - assist breathing with appropriate device."},
+			{"type":"label","value":"F - If breathing is inadequate and patient is responsive - administer OXYGEN as needed, as necessary to maintain SaO2 > 94%."},
+			{"type":"next","value":"Next"}
+		]
+	},
+	"adultPrimaryAssessment4": {
+		"title": "Adult Primary Assessment",
+		"subtitle": "Initial Assessment 4\/7",
+		"nodeType": "display",
+		"next": "adultPrimaryAssessment5",
+		"objects": [
+			{"type":"label","value":"4. Assess the circulation / perfusion"},
+			{"type":"label","value":"A - Assess rate and quality of pulses - peripheral and central pulses."},
+			{"type":"label","value":"B - Stop any active bleeding, assess skin color, temperature, and obtain blood pressure."},
+			{"type":"label","value":"C - If there is no palpable pulse or rate is too slow to maintain cerebral blood flow, begin CPR."},
+			{"type":"label","value":"D - If bleeding is present - manage bleeding."},
+			{"type":"label","value":"E - If breathing is inadequate and patient is unresponsive - assist breathing with appropriate device."},
+			{"type":"label","value":"F - If breathing is inadequate and patient is responsive - administer OXYGEN as needed, as necessary to maintain SaO2 > 94%."},
+			{"type":"next","value":"Next"}
+		]
+	},
+	"adultPrimaryAssessment5": {
+		"title": "Adult Primary Assessment",
+		"subtitle": "Initial Assessment 5\/7",
+		"nodeType": "display",
+		"next": "adultPrimaryAssessment6",
+		"objects": [
+			{"type":"label","value":"5. Provide care for any compromise in airway, breathing, circulation, or neurological status per protocol and perform basic life support as per current American Heart Association Guidelines."},
+			{"type":"next","value":"Next"}
+		]
+	},
+	"adultPrimaryAssessment6": {
+		"title": "Adult Primary Assessment",
+		"subtitle": "Initial Assessment 6\/7",
+		"nodeType": "display",
+		"next": "adultPrimaryAssessment7",
+		"objects": [
+			{"type":"label","value":"6. Identify priority patients and make a transport decision."},
+			{"type":"label","value":"A - Priority patients include those with compromises in airway, level of consciousness, breathing, and circulation, which are not easily remedied with basic intervention."},
+			{"type":"label","value":"B - If identified as a non-priority medical patient, go to Patient Assessment Medical."},
+			{"type":"label","value":"C - If identified as a non priority trauma patent, go to Patient Assessment-Trauma."},
+			{"type":"next","value":"Next"}
+		]
+	},
+	"adultPrimaryAssessment7": {
+		"title": "Adult Primary Assessment",
+		"subtitle": "Initial Assessment 7\/7",
+		"nodeType": "display",
+		"next": "adultPrimaryAssessment7",
+		"objects": [
+			{"type":"label","value":"7. Further assessments, go to:"},
+			{"type":"label","value":"A - Patient Assessment Medical"},
+			{"type":"label","value":"B - Patient Assessment-Trauma"},
+			{"type":"next","value":"Next"}
+		]
 	}
 }
