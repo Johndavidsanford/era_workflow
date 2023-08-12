@@ -1,109 +1,500 @@
 {
 	"universalPatientAssessment": {
-		"title": "Universal Patient Assessment",
-		"subtitle": "Scene Size-up",
+		"title": "List of Conditions",
+		"subtitle": "",
 		"nodeType": "display",
-		"next": "adultPrimaryAssessment1",
+		"next": "conditionList",
 		"objects": [
-			{"type":"label","value":"1. Don appropriate level of Body Substance Isolation (BSI) precautions."},
-			{"type":"label","value":"2. Assess the scene for dangers to the rescuer."},
-			{"type":"label","value":"3. Consider the number of patients, mechanism of injury or nature of the illness."},
-			{"type":"label","value":"4. Request additional help if necessary."},
-			{"type":"next","value":"Next"}
+			{"type":"link","value":"Abdominal Pain","target":"abdominalPain"},
+			{"type":"link","value":"Abuse","target":"abuse"},
+			{"type":"link","value":"Acute Stroke","target":"acuteStroke"},
+			{"type":"link","value":"Air Medical Transport","target":"airMedicalTransport"},
+			{"type":"link","value":"Allergic Reaction","target":"allergicReaction"},
+			{"type":"link","value":"Altered Level of Consciousness","target":"alteredConsciousness"},
+			{"type":"link","value":"Asthma Attack","target":"asthmaAttack"},
+			{"type":"link","value":"Absystole","target":"asystole"},
+			{"type":"link","value":"Bradycardia","target":"bradycardia"},
+			{"type":"link","value":"Bronchitis","target":"bronchitis"},
+			{"type":"link","value":"Burns","target":"burns"},
+			{"type":"link","value":"Cardiac Arrest","target":"cardiacArrest"},
+			{"type":"link","value":"Central Line Monitoring","target":"centralLineMonitoring"},
+			{"type":"link","value":"Chest Decompression","target":"chestDecompression"},
+			{"type":"link","value":"Chest Pain/STEMI","target":"chestPain"},
+			{"type":"link","value":"Chest Tube Monitoring","target":"chestTubeMonitoring"},
+			{"type":"link","value":"Childbirth","target":"childbirth"},
+			{"type":"link","value":"CPAP","target":"cpap"},
+			{"type":"link","value":"Cricothyrotomy","target":"cricothyrotomy"},
+			{"type":"link","value":"Diabetic","target":"diabetic"},
+			{"type":"link","value":"Diabetic Emergency","target":"diabeticEmergency"},
+			{"type":"link","value":"Eye Injuries","target":"eyeInjuries"},
+			{"type":"link","value":"External Pacemaker","target":"externalPacemaker"},
+			{"type":"link","value":"GLASGOW Coma Scale","target":"glasgowComaScale"},
+			{"type":"link","value":"Hyperthermia","target":"hyperthermia"},
+			{"type":"link","value":"Hypothermia","target":"hypothermia"},
+			{"type":"link","value":"Intubation","target":"intubation"},
+			{"type":"link","value":"Narrow Complex Tachycardia","target":"tachycardia"},
+			{"type":"link","value":"Organophosphate Poisoning","target":"organophosphatePoisoning"},
+			{"type":"link","value":"Pain Management","target":"painManagement"},
+			{"type":"link","value":"Poisoning","target":"poisoning"},
+			{"type":"link","value":"Poison Treatment","target":"poisonTreatment"},
+			{"type":"link","value":"Post Resuscitation","target":"postResuscitation"},
+			{"type":"link","value":"Pregnant","target":"pregnant"},
+			{"type":"link","value":"Psychiatric Emergency","target":"psychiatricEmergency"},
+			{"type":"link","value":"Pulmonary Edema/CHF","target":"pulmonaryEdema"},
+			{"type":"link","value":"Psychiatric Treatment","target":"psychiatricTreatment"},
+			{"type":"link","value":"Pulse Oximetry","target":"pulseOximetry"},
+			{"type":"link","value":"Renal Failure","target":"renalFailure"},
+			{"type":"link","value":"Respiratory Distress","target":"respiratoryDistress"},
+			{"type":"link","value":"Revised Trauma Score","target":"revisedTraumaScore"},
+			{"type":"link","value":"Seizure","target":"seizure"},
+			{"type":"link","value":"Severe Pain","target":"severePain"},
+			{"type":"link","value":"Shock","target":"shock"},
+			{"type":"link","value":"Trauma","target":"trauma"},
+			{"type":"link","value":"Trauma Arrest","target":"traumaArrest"},
+			{"type":"link","value":"Trauma Emergency","target":"traumaEmergency"},
+			{"type":"link","value":"Violent","target":"violent"},
+			{"type":"link","value":"Wide Complex Tachycardia","target":"tachycardia"}
 		]
 	},
-	"adultPrimaryAssessment1": {
-		"title": "Adult Primary Assessment",
-		"subtitle": "Initial Assessment 1\/7",
+	"abdominalPain": {
+		"title": "Abdominal Pain",
+		"subtitle": "",
 		"nodeType": "display",
-		"next": "adultPrimaryAssessment2",
+		"next": "",
 		"objects": [
-			{"type":"label","value":"1. Quickly assess level of consciousness using the AVPU Method."},
-			{"type":"label","value":"A - Alert: Eyes Open"},
-			{"type":"label","value":"V - Verbal: Responds to vocal stimuli"},
-			{"type":"label","value":"P - Pain: Responds only to pain"},
-			{"type":"label","value":"U - Unresponsive: No response to verbal or Painful stimuli"},
-			{"type":"next","value":"Next"}
+			{"type":"back","value":"Back"}
 		]
 	},
-	"adultPrimaryAssessment2": {
-		"title": "Adult Primary Assessment",
-		"subtitle": "Initial Assessment 2\/7",
+	"abuse": {
+		"title": "Abuse",
+		"subtitle": "",
 		"nodeType": "display",
-		"next": "adultPrimaryAssessment3",
+		"next": "",
 		"objects": [
-			{"type":"label","value":"2. Assess the airway (protect c-spine if uncertain)"},
-			{"type":"label","value":"A - Responsive - no intervention needed, proceed to step 3."},
-			{"type":"label","value":"B - If unresponsive - use the appropriate medical or trauma maneuver to open the airway."},
-			{"type":"label","value":"C - If airway remains partially or totally obstructed, continue attempts to clear the airway. (refer to Airway Emergencies)."},
-			{"type":"next","value":"Next"}
+			{"type":"back","value":"Back"}
 		]
 	},
-	"adultPrimaryAssessment3": {
-		"title": "Adult Primary Assessment",
-		"subtitle": "Initial Assessment 3\/7",
+	"acuteStroke": {
+		"title": "Acute Stroke",
+		"subtitle": "",
 		"nodeType": "display",
-		"next": "adultPrimaryAssessment4",
+		"next": "",
 		"objects": [
-			{"type":"label","value":"3. Assess adequacy of breathing"},
-			{"type":"label","value":"A - Observe chest rise and fall, auscultate breath sounds anteriorly, posteriorly and peripherally."},
-			{"type":"label","value":"B - Observe for signs of distress - use of secondary muscles, cyanosis."},
-			{"type":"label","value":"C - Count the respiratory rate and obtain pulse oximeter reading (SpO2) if available."},
-			{"type":"label","value":"D - If breathing adequate - Go to step 4."},
-			{"type":"label","value":"E - If breathing is inadequate and patient is unresponsive - assist breathing with appropriate device."},
-			{"type":"label","value":"F - If breathing is inadequate and patient is responsive - administer OXYGEN as needed, as necessary to maintain SaO2 > 94%."},
-			{"type":"next","value":"Next"}
+			{"type":"back","value":"Back"}
 		]
 	},
-	"adultPrimaryAssessment4": {
-		"title": "Adult Primary Assessment",
-		"subtitle": "Initial Assessment 4\/7",
+	"airMedicalTransport": {
+		"title": "Air Medical Transport",
+		"subtitle": "",
 		"nodeType": "display",
-		"next": "adultPrimaryAssessment5",
+		"next": "",
 		"objects": [
-			{"type":"label","value":"4. Assess the circulation / perfusion"},
-			{"type":"label","value":"A - Assess rate and quality of pulses - peripheral and central pulses."},
-			{"type":"label","value":"B - Stop any active bleeding, assess skin color, temperature, and obtain blood pressure."},
-			{"type":"label","value":"C - If there is no palpable pulse or rate is too slow to maintain cerebral blood flow, begin CPR."},
-			{"type":"label","value":"D - If bleeding is present - manage bleeding."},
-			{"type":"label","value":"E - If breathing is inadequate and patient is unresponsive - assist breathing with appropriate device."},
-			{"type":"label","value":"F - If breathing is inadequate and patient is responsive - administer OXYGEN as needed, as necessary to maintain SaO2 > 94%."},
-			{"type":"next","value":"Next"}
+			{"type":"back","value":"Back"}
 		]
 	},
-	"adultPrimaryAssessment5": {
-		"title": "Adult Primary Assessment",
-		"subtitle": "Initial Assessment 5\/7",
+	"allergicReaction": {
+		"title": "Allergic Reaction",
+		"subtitle": "",
 		"nodeType": "display",
-		"next": "adultPrimaryAssessment6",
+		"next": "",
 		"objects": [
-			{"type":"label","value":"5. Provide care for any compromise in airway, breathing, circulation, or neurological status per protocol and perform basic life support as per current American Heart Association Guidelines."},
-			{"type":"next","value":"Next"}
+			{"type":"back","value":"Back"}
 		]
 	},
-	"adultPrimaryAssessment6": {
-		"title": "Adult Primary Assessment",
-		"subtitle": "Initial Assessment 6\/7",
+	"alteredConsciousness": {
+		"title": "Altered Level of Consciousness",
+		"subtitle": "",
 		"nodeType": "display",
-		"next": "adultPrimaryAssessment7",
+		"next": "",
 		"objects": [
-			{"type":"label","value":"6. Identify priority patients and make a transport decision."},
-			{"type":"label","value":"A - Priority patients include those with compromises in airway, level of consciousness, breathing, and circulation, which are not easily remedied with basic intervention."},
-			{"type":"label","value":"B - If identified as a non-priority medical patient, go to Patient Assessment Medical."},
-			{"type":"label","value":"C - If identified as a non priority trauma patent, go to Patient Assessment-Trauma."},
-			{"type":"next","value":"Next"}
+			{"type":"back","value":"Back"}
 		]
 	},
-	"adultPrimaryAssessment7": {
-		"title": "Adult Primary Assessment",
-		"subtitle": "Initial Assessment 7\/7",
+	"asthmaAttack": {
+		"title": "Asthma Attack",
+		"subtitle": "",
 		"nodeType": "display",
-		"next": "adultPrimaryAssessment7",
+		"next": "",
 		"objects": [
-			{"type":"label","value":"7. Further assessments, go to:"},
-			{"type":"label","value":"A - Patient Assessment Medical"},
-			{"type":"label","value":"B - Patient Assessment-Trauma"},
-			{"type":"next","value":"Next"}
+			{"type":"back","value":"Back"}
+		]
+	},
+	"absystole": {
+		"title": "Absystole",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"bradycardia": {
+		"title": "Bradycardia",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"bronchitis": {
+		"title": "Bronchitis",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"burns": {
+		"title": "Burns",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"cardiacArrest": {
+		"title": "Cardiac Arrest",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"centralLineMonitoring": {
+		"title": "Central Line Monitoring",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"chestDecompression": {
+		"title": "Chest Decompression",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"chestPain": {
+		"title": "Chest Pain/STEMI",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"chestTubeMonitoring": {
+		"title": "Chest Tube Monitoring",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"childbirth": {
+		"title": "Childbirth",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"cpap": {
+		"title": "CPAP",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"cricothyrotomy": {
+		"title": "Cricothyrotomy",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"diabetic": {
+		"title": "Diabetic",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"diabeticEmergency": {
+		"title": "Diabetic Emergency",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"eyeInjuries": {
+		"title": "Eye Injuries",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"externalPacemaker": {
+		"title": "External Pacemaker",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"glasgowComaScale": {
+		"title": "GLASGOW Coma Scale",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"hyperthermia": {
+		"title": "Hyperthermia",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"hypothermia": {
+		"title": "Hypothermia",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"intubation": {
+		"title": "Intubation",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"tachycardia": {
+		"title": "Narrow Complex Tachycardia",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"organophosphatePoisoning": {
+		"title": "Organophosphate Poisoning",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"painManagement": {
+		"title": "Pain Management",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"poisoning": {
+		"title": "Poisoning",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"poisonTreatment": {
+		"title": "Poison Treatment",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"postResuscitation": {
+		"title": "Post Resuscitation",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"pregnant": {
+		"title": "Pregnant",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"psychiatricEmergency": {
+		"title": "Psychiatric Emergency",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"pulmonaryEdema": {
+		"title": "Pulmonary Edema/CHF",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"psychiatricTreatment": {
+		"title": "Psychiatric Treatment",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"pulseOximetry": {
+		"title": "Pulse Oximetry",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"renalFailure": {
+		"title": "Renal Failure",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"respiratoryDistress": {
+		"title": "Respiratory Distress",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"revisedTraumaScore": {
+		"title": "Revised Trauma Score",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"seizure": {
+		"title": "Seizure",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"severePain": {
+		"title": "Severe Pain",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"shock": {
+		"title": "Shock",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"trauma": {
+		"title": "Trauma",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"traumaArrest": {
+		"title": "Trauma Arrest",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"traumaEmergency": {
+		"title": "Trauma Emergency",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"violent": {
+		"title": "Violent",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
+		]
+	},
+	"tachycardia": {
+		"title": "Wide Complex Tachycardia",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{"type":"back","value":"Back"}
 		]
 	}
 }
