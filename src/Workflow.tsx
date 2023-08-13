@@ -22,31 +22,65 @@ export default class Workflow extends React.Component<WorkflowProps, WokflowStat
       }
     }
   };
-  render() {
-    const node = this.state.node;
-    return <React.Fragment>
-      <input type="text" id="age" placeholder="Patient Age" onClick={(value) => {
-        this.setState(
-          {
-            patient: {
-              ...this.state.patient,
-              age: value
-            },
-          }
-        );
+  resolveTableNode(node: any): any {
+    return Object.keys(node).map((key) => {
+      switch (key) {
+        case "objects":
+          return (Object.keys(node[key]).map((key2) => {
+            switch (node[key][key2].type) {
+              case "label":
+                return (<p key={key2}>{node[key][key2].value}</p>)
+              case "bullet":
+                return (<p key={key2}>{"     • " + node[key][key2].value}</p>)
+              case "table":
+                return (<table>
+                  {
+                    Object.entries(node[key][key2].rows).map((row: any) => {
+                      return (<tr>
+                        {
+                          Array(row[1].cells).map((cells: any) => {
+                            return Object.entries(cells).map((cell: any) => {
+                              console.log("cell[1]", cell[1]);
+                              return (<td colSpan={cell[1].span}>
+                                {
+                                  this.resolveTableNode(cell[1])
+                                }
+                              </td>)
+                            })
+                          })
+                        }
+                      </tr>)
+                    })
+                  }
+                </table>)
+              case "link":
+                return (<input key={key2} type="button" value={node[key][key2].value} onClick={() => {
+                  if (this.state.patient.age && this.state.patient.weight) {
+                    this.setState(
+                      {
+                        timestamps: {
+                          ...this.state.timestamps,
+                          workflowKey: new Date()
+                        },
+                        workflowKey: node[key][key2].target,
+                        node: workflow[node[key][key2].target as keyof typeof workflow]
+                      }
+                    );
+                  } else {
+                    alert("Patient Age and Weight are required!");
+                  }
+                }
+                } />)
+            }
+          }))
+        default:
+          // code block
+          break;
       }
-      } />
-      <input type="text" id="weight" placeholder="Patient Weight" onClick={(value) => {
-        this.setState(
-          {
-            patient: {
-              ...this.state.patient,
-              weight: value
-            },
-          }
-        );
-      }
-      } />
+    })
+  };
+  resolveNode(node: any): any {
+    return <div className={node.nodeType ? node.nodeType : "node"}>
       {
         Object.keys(node).map((key) => {
           switch (key) {
@@ -59,6 +93,31 @@ export default class Workflow extends React.Component<WorkflowProps, WokflowStat
                 switch (node[key][key2].type) {
                   case "label":
                     return (<p key={key2}>{node[key][key2].value}</p>)
+                  case "bullet":
+                    return (<p key={key2}>{"     • " + node[key][key2].value}</p>)
+                  case "table":
+                    return (<table>
+                      {
+                        Object.entries(node[key][key2].rows).map((row: any) => {
+                          return (<tr>
+                            {
+                              Array(row[1].cells).map((cells: any) => {
+                                return Object.entries(cells).map((cell: any) => {
+                                  console.log("cell[1]", cell[1]);
+                                  return (<td colSpan={cell[1].span}>
+                                    {
+                                      this.resolveTableNode(cell[1])
+                                    }
+                                  </td>)
+                                })
+                              })
+                            }
+                          </tr>)
+                        })
+                      }
+                    </table>)
+                  case "node":
+                    return this.resolveNode(node[key][key2])
                   case "link":
                     return (<input key={key2} type="button" value={node[key][key2].value} onClick={() => {
                       if (this.state.patient.age && this.state.patient.weight) {
@@ -96,7 +155,7 @@ export default class Workflow extends React.Component<WorkflowProps, WokflowStat
                     }
                     } />)
                   case "back":
-                    return (<input key={key2} type="button" value={node[key][key2].value} onClick={() => {
+                    return (<input key={key2} type="button" className="back" value={node[key][key2].value} onClick={() => {
                       if (this.state.patient.age && this.state.patient.weight) {
                         this.setState(
                           {
@@ -121,6 +180,34 @@ export default class Workflow extends React.Component<WorkflowProps, WokflowStat
           }
         })
       }
+    </div>
+  };
+  render() {
+    const node = this.state.node;
+    return <React.Fragment>
+      <input type="text" id="age" placeholder="Patient Age" onClick={(value) => {
+        this.setState(
+          {
+            patient: {
+              ...this.state.patient,
+              age: value
+            },
+          }
+        );
+      }
+      } />
+      <input type="text" id="weight" placeholder="Patient Weight" onClick={(value) => {
+        this.setState(
+          {
+            patient: {
+              ...this.state.patient,
+              weight: value
+            },
+          }
+        );
+      }
+      } />
+      {this.resolveNode(node)}
     </React.Fragment>
   }
 }

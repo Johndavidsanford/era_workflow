@@ -37,10 +37,49 @@
   }
 }
 body {
-  background-color: 000;
-  color: fff;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
 }
 input {
   padding: 5px;
-  border: 2px solid #ff0000;
+  margin: 5px;
+  border-width: 2px 2px 4px 3px;
+  border-style: solid;
+  border-color: #ff0000;
+  border-radius: 8px;
+}
+table {
+  border: 2px solid #FFF;
+}
+tr {
+  padding: none;
+}
+td {
+  border: 1px solid #FFF;
+}
+.conditionList {
+  width: 90%;
+  text-align-last: center;
+  padding: 5px;
+  margin: auto;
+  border-width: 2px 2px 4px 3px;
+  border-style: solid;
+  border-color: #ff0000;
+  border-radius: 8px;
+}
+.node {
+  width: auto;
+  float: left;
+  text-align: left;
+  padding: 5px;
+  margin: 20px;
+  border-width: 2px 2px 4px 3px;
+  border-style: solid;
+  border-color: #ff0000;
+  border-radius: 8px;
+}
+.back {
+  position: fixed;
+  bottom: 5px;
 }

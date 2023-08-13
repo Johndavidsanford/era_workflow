@@ -2,7 +2,7 @@
 	"universalPatientAssessment": {
 		"title": "List of Conditions",
 		"subtitle": "",
-		"nodeType": "display",
+		"nodeType": "conditionList",
 		"next": "conditionList",
 		"objects": [
 			{"type":"link","value":"Abdominal Pain","target":"abdominalPain"},
@@ -62,6 +62,250 @@
 		"nodeType": "display",
 		"next": "",
 		"objects": [
+			{
+				"id":"start",
+				"type":"node",
+				"next":["oxygen"],
+				"level":"grey",
+				"objects": [
+					{"type":"link","value":"Universal Patient Assessment","target":"universalPatientAssessment"}
+				]
+			},
+			{
+				"id":"oxygen",
+				"type":"node",
+				"next":["evaluate"],
+				"level":"red",
+				"objects": [
+					{"type":"link","value":"Oxygen","target":"oxygen"},
+					{"type":"label","value":"As needed to treat shock and/or respiratory distress"},
+					{"type":"link","value":"Apply Pulse Oximetry","target":"pulseOximetry"}
+				]
+			},
+			{
+				"id":"evaluate",
+				"type":"node",
+				"next":"assess",
+				"level":"grey",
+				"objects": [
+					{
+						"type":"table",
+						"columns":2,
+						"rows": [
+							{
+								"cells":[
+									{
+										"span":2,
+										"objects":[
+											{"type":"label","value":"Evaluate patient's general appearance, relevant history of condition and determine:"}
+										]
+									}
+								]
+							},
+							{
+								"cells":[
+									{
+										"span":1,
+										"objects":[
+											{"type":"label","value":"Onset"}
+										]
+									},
+									{
+										"span":1,
+										"objects":[
+											{"type":"label","value":"Allergies"}
+										]
+									}
+								]
+							},
+							{
+								"cells":[
+									{
+										"span":1,
+										"objects":[
+											{"type":"label","value":"Provokes"}
+										]
+									},
+									{
+										"span":1,
+										"objects":[
+											{"type":"label","value":"Medication"}
+										]
+									}
+								]
+							},
+							{
+								"cells":[
+									{
+										"span":1,
+										"objects":[
+											{"type":"label","value":"Quality"}
+										]
+									},
+									{
+										"span":1,
+										"objects":[
+											{"type":"label","value":"Past Medical History-Especially recent surgery, any abnormal ingestion, previous trauma, related medical diseases"}
+										]
+									}
+								]
+							},
+							{
+								"cells":[
+									{
+										"span":1,
+										"objects":[
+											{"type":"label","value":"Radiates"}
+										]
+									},
+									{
+										"span":1,
+										"objects":[
+											{"type":"label","value":""}
+										]
+									}
+								]
+							},
+							{
+								"cells":[
+									{
+										"span":1,
+										"objects":[
+											{"type":"label","value":"Severity"}
+										]
+									},
+									{
+										"span":1,
+										"objects":[
+											{"type":"label","value":""}
+										]
+									}
+								]
+							},
+							{
+								"cells":[
+									{
+										"span":1,
+										"objects":[
+											{"type":"label","value":"Time"}
+										]
+									},
+									{
+										"span":1,
+										"objects":[
+											{"type":"label","value":"Last Meal"}
+										]
+									}
+								]
+							},
+							{
+								"cells":[
+									{
+										"span":1,
+										"objects":[
+											{"type":"label","value":"Interventions"}
+										]
+									},
+									{
+										"span":1,
+										"objects":[
+											{"type":"label","value":"AEvents leading to present illnessllergies"}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"id":"assess",
+				"type":"node",
+				"next":["transport"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"Assess additional associated signs and symptoms:"},
+					{"type":"bullet","value":"Nausea/vomiting blood or coffee grounds"},
+					{"type":"bullet","value":"Constipation/diarrhea-black tarry or bloody bowel movements"},
+					{"type":"bullet","value":"Problems with urination"},
+					{"type":"bullet","value":"Menstrual abnormality"},
+					{"type":"bullet","value":"Fever"},
+					{"type":"bullet","value":"Tenderness, rigidity and presence of absence of bowel sounds"},
+					{"type":"bullet","value":"Cardiac associated symptoms: Dyspnea, Diaphoresis, SOB"}
+				]
+			},
+			{
+				"id":"transport",
+				"type":"node",
+				"next":["adultIvIo"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"Transport in position of comfort, preferable supine with knees flexed, unless there is respiratory distress."},
+					{"type":"label","value":"Give nothing by mouth."}
+				]
+			},
+			{
+				"id":"adultIvIo",
+				"type":"node",
+				"next":["monitor","administer"],
+				"level":"yellow",
+				"objects": [
+					{"type":"link","value":"Adult IV/IO","target":"adultIvIo"},
+					{"type":"label","value":"If systolic BP < 90 mmHg go to:"},
+					{"type":"link","value":"Non-Traumatic Shock/Dehydration","target":"nonTraumaticShockDehydration"}
+				]
+			},
+			{
+				"id":"monitor",
+				"type":"node",
+				"next":[],
+				"level":"red",
+				"objects": [
+					{"type":"label","value":"Monitor ECG during transport."},
+					{"type":"link","value":"12 Lead ECG","target":"12LeadEcg"},
+					{"type":"label","value":"For upper abdominal pain"}
+				]
+			},
+			{
+				"id":"administer",
+				"type":"node",
+				"next":["or","painControl"],
+				"level":"green",
+				"objects": [
+					{"type":"label","value":"For Nausea, consider"},
+					{"type":"link","value":"Ondansetron (Zofran)","target":"ondansetron"},
+					{"type":"label","value":"4mgIVP,IO May repeat in 10 minutes x 1 additional dose."}
+				]
+			},
+			{
+				"id":"or",
+				"type":"node",
+				"next":["ondansetron"],
+				"level":"none",
+				"objects": [
+					{"type":"label","value":"OR"}
+				]
+			},
+			{
+				"id":"ondansetron",
+				"type":"node",
+				"next":[],
+				"level":"yellow",
+				"objects": [
+					{"type":"link","value":"Ondansetron (Zofran)","target":"ondansetron"},
+					{"type":"label","value":"8 mg PO"}
+				]
+			},
+			{
+				"id":"painControl",
+				"type":"node",
+				"next":[],
+				"level":"yellow",
+				"objects": [
+					{"type":"label","value":"Consider "},
+					{"type":"link","value":"Pain Control","target":"painControl"}
+				]
+			},
 			{"type":"back","value":"Back"}
 		]
 	},
@@ -488,12 +732,29 @@
 			{"type":"back","value":"Back"}
 		]
 	},
-	"tachycardia": {
-		"title": "Wide Complex Tachycardia",
+	"oxygen": {
+		"title": "Oxygen",
 		"subtitle": "",
 		"nodeType": "display",
 		"next": "",
 		"objects": [
+			{
+				"type":"node",
+				"value":"Special Notes: Onset N/A, Peak effect: N/A",
+				"level":"none",
+				"objects": [
+					{"type":"label","value":"Special Notes: Onset N/A, Peak effect: N/A"}
+				]
+			},
+			{
+				"type":"node",
+				"title":"Adult Dosing & Indications",
+				"value":"Special Notes: Onset N/A, Peak effect: N/A",
+				"level":"blue",
+				"objects": [
+					{"type":"label","value":"Special Notes: Onset N/A, Peak effect: N/A"}
+				]
+			},
 			{"type":"back","value":"Back"}
 		]
 	}
