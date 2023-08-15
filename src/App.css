@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: cyan;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -32,32 +32,130 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
 body {
+  font-family: roboto, Arial;
+  font-size: 1rem;
   background-color: #000;
   color: #fff;
   text-align: center;
+  padding: 0px;
+  margin: 0px;
+  margin-top: 80px;
 }
+
 input {
-  padding: 5px;
+  font-size: 1.2rem;
+  padding: 20px;
+  background-color: #ffffff;
+  color: black;
   margin: 5px;
   border-width: 2px 2px 4px 3px;
-  border-style: solid;
+  border-style: none;
   border-color: #ff0000;
   border-radius: 8px;
 }
+input {
+color: black;
+background-color: #3b3b3b;
+border: 2px solid #4d4d4d;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input::placeholder{
+  color:rgb(109, 109, 109);
+}
+
+input[type=text]:focus {
+  border: 2px solid rgb(79, 136, 222);
+  color:black;
+  background-color:white;
+}
+
+h1 {
+  top: 0px;
+  padding: 20px 0px;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  background-color:rgba(0, 0, 0, 0.68);
+  z-index: 1;
+  margin: 0px;
+}
+
+p {
+  font-size: 1.2rem;
+}
+
+input[type=button] {
+  border: solid;
+  border-width: 1px;
+  border-color: #bd1412;
+  color:white;
+  background-color: black;
+}
+
+#age {
+  /* display: none; */
+  position: fixed;
+  left: 120px;
+  top: 0px;
+  z-index: 2;
+}
+
+#weight {
+  /* display: none; */
+  position: fixed;
+  left: 414px;
+  top: 0px;
+  z-index: 2;
+}
+
 table {
-  border: 2px solid #FFF;
+  border-collapse: collapse;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+  margin: auto;
+  border-spacing: 0;
 }
-tr {
-  padding: none;
-}
+
 td {
-  border: 1px solid #FFF;
+  border: 1px solid #ffffff14;
+  padding: 8px;
+  border-spacing: 0;
+  border-collapse: collapse;
 }
+
+tr:nth-child(even){background-color: #ffffff08;}
+
+.listView {
+ width: fit-content;
+ margin: auto;
+ padding-left: 20px;
+}
+
+ul {
+  list-style: none;
+  color: white;
+  text-align: left;
+}
+
+ul li::before {
+  content: "\2022";
+  color: red;
+  font-weight: bold;
+  display: inline-block; 
+  width: 1em;
+  margin-left: -1em;
+}
+
 .conditionList {
   width: 90%;
   text-align-last: center;
@@ -68,18 +166,44 @@ td {
   border-color: #ff0000;
   border-radius: 8px;
 }
+
 .node {
+  margin: auto;
+  padding: 20px 0px;
+  text-align: center;
+
   width: auto;
-  float: left;
+  /* float: left; */
+
+  margin: 20px;
+  border-width: 0px;
+  border-style: none;
+  border-color: #ff0000;
+  border-radius: 8px;
+  background-color: #1f1f1f;
+}
+
+.node_original {
+  width: auto;
+  /* float: left; */
   text-align: left;
   padding: 5px;
   margin: 20px;
   border-width: 2px 2px 4px 3px;
-  border-style: solid;
+  border-style: none;
   border-color: #ff0000;
   border-radius: 8px;
 }
+
 .back {
   position: fixed;
-  bottom: 5px;
+  top: 0px;
+  left: 20px;
+  z-index: 2;
+  height: 67px;
+}
+
+.conditionList {
+  border:none;
+
 }

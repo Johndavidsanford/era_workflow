@@ -225,13 +225,15 @@
 				"level":"grey",
 				"objects": [
 					{"type":"label","value":"Assess additional associated signs and symptoms:"},
-					{"type":"bullet","value":"Nausea/vomiting blood or coffee grounds"},
-					{"type":"bullet","value":"Constipation/diarrhea-black tarry or bloody bowel movements"},
-					{"type":"bullet","value":"Problems with urination"},
-					{"type":"bullet","value":"Menstrual abnormality"},
-					{"type":"bullet","value":"Fever"},
-					{"type":"bullet","value":"Tenderness, rigidity and presence of absence of bowel sounds"},
-					{"type":"bullet","value":"Cardiac associated symptoms: Dyspnea, Diaphoresis, SOB"}
+					{"type":"list","objects":[
+						{"type":"label","value":"Nausea/vomiting blood or coffee grounds"},
+						{"type":"label","value":"Constipation/diarrhea-black tarry or bloody bowel movements"},
+						{"type":"label","value":"Problems with urination"},
+						{"type":"label","value":"Menstrual abnormality"},
+						{"type":"label","value":"Fever"},
+						{"type":"label","value":"Tenderness, rigidity and presence of absence of bowel sounds"},
+						{"type":"label","value":"Cardiac associated symptoms: Dyspnea, Diaphoresis, SOB"}
+					]}
 				]
 			},
 			{

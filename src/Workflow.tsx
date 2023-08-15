@@ -30,8 +30,14 @@ export default class Workflow extends React.Component<WorkflowProps, WokflowStat
             switch (node[key][key2].type) {
               case "label":
                 return (<p key={key2}>{node[key][key2].value}</p>)
-              case "bullet":
-                return (<p key={key2}>{"     • " + node[key][key2].value}</p>)
+              case "list":
+                return (<ul>
+                  {
+                    Object.entries(node[key][key2].objects).map((object: any) => {
+                      return (<li>{object.value}</li>)
+                    })
+                  }
+                </ul>)
               case "table":
                 return (<table>
                   {
@@ -93,8 +99,14 @@ export default class Workflow extends React.Component<WorkflowProps, WokflowStat
                 switch (node[key][key2].type) {
                   case "label":
                     return (<p key={key2}>{node[key][key2].value}</p>)
-                  case "bullet":
-                    return (<p key={key2}>{"     • " + node[key][key2].value}</p>)
+                  case "list":
+                    return (<div className="listView"><ul>
+                      {
+                        Object.entries(node[key][key2].objects).map((object: any) => {
+                          return <li>{object[1].value}</li>
+                        })
+                      }
+                    </ul></div>)
                   case "table":
                     return (<table>
                       {
