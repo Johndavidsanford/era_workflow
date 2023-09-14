@@ -169,12 +169,10 @@ ul li::before {
 
 .node {
   margin: auto;
-  padding: 20px 0px;
+  padding: 20px;
   text-align: center;
-
-  width: auto;
-  /* float: left; */
-
+  width: fit-content;
+  float: left;
   margin: 20px;
   border-width: 0px;
   border-style: none;
@@ -182,10 +180,23 @@ ul li::before {
   border-radius: 8px;
   background-color: #1f1f1f;
 }
+/* node colors */
+.yellow {
+  border-top: 6px solid yellow ! important;
+}
+.grey {
+  border-top: 6px solid grey ! important;
+}
+.red {
+  border-top: 6px solid red ! important;
+}
+.green {
+  border-top: 6px solid green ! important;
+}
 
 .node_original {
   width: auto;
-  /* float: left; */
+  float: left;
   text-align: left;
   padding: 5px;
   margin: 20px;

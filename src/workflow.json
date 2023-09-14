@@ -85,7 +85,7 @@
 			{
 				"id":"evaluate",
 				"type":"node",
-				"next":"assess",
+				"next":["assess"],
 				"level":"grey",
 				"objects": [
 					{
@@ -209,7 +209,7 @@
 									{
 										"span":1,
 										"objects":[
-											{"type":"label","value":"AEvents leading to present illnessllergies"}
+											{"type":"label","value":"Events leading to present illness"}
 										]
 									}
 								]
@@ -249,7 +249,7 @@
 			{
 				"id":"adultIvIo",
 				"type":"node",
-				"next":["monitor","administer"],
+				"next":["monitor","or"],
 				"level":"yellow",
 				"objects": [
 					{"type":"link","value":"Adult IV/IO","target":"adultIvIo"},
@@ -271,7 +271,7 @@
 			{
 				"id":"administer",
 				"type":"node",
-				"next":["or","painControl"],
+				"next":["painControl"],
 				"level":"green",
 				"objects": [
 					{"type":"label","value":"For Nausea, consider"},
@@ -282,7 +282,7 @@
 			{
 				"id":"or",
 				"type":"node",
-				"next":["ondansetron"],
+				"next":["ondansetron","administer"],
 				"level":"none",
 				"objects": [
 					{"type":"label","value":"OR"}
@@ -291,7 +291,7 @@
 			{
 				"id":"ondansetron",
 				"type":"node",
-				"next":[],
+				"next":["painControl"],
 				"level":"yellow",
 				"objects": [
 					{"type":"link","value":"Ondansetron (Zofran)","target":"ondansetron"},
