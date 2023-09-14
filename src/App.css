@@ -168,7 +168,8 @@ ul li::before {
 }
 
 .node {
-  margin: auto;
+  /* margin: auto; */
+  position: relative;
   padding: 20px;
   text-align: center;
   width: fit-content;
@@ -179,6 +180,7 @@ ul li::before {
   border-color: #ff0000;
   border-radius: 8px;
   background-color: #1f1f1f;
+  z-index: 999;
 }
 /* node colors */
 .yellow {

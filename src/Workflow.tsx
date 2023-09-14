@@ -17,10 +17,14 @@ type Point = {
   x: number;
   y: number;
 };
+type Span = {
+  width: number;
+  height: number;
+};
 type ArrowProps = {
   id: any,
   refz: any,
-  arrowParams: {from: Point, to: Point}
+  arrowParams: {from: Point, to: Point, target: Span}
 };
 let arrows: { from: any; to: string; }[] = [];
 let ids: String[] = [];
@@ -36,9 +40,26 @@ const Arrow = ({ id, refz, arrowParams}: ArrowProps) => {
   };
   const canvasWidth = Math.abs(canvasStartPoint.x - canvasEndPoint.x);
   const canvasHeight = Math.abs(canvasStartPoint.y - canvasEndPoint.y);
-  let temp2 = (arrowParams.to.x - canvasStartPoint.x) + " " + (arrowParams.to.y - canvasStartPoint.y) + "," +
-    (arrowParams.to.x - canvasStartPoint.x - 10) + " " + (arrowParams.to.y - canvasStartPoint.y - 10) + "," +
-    (arrowParams.to.x - canvasStartPoint.x + 10) + " " + (arrowParams.to.y - canvasStartPoint.y - 10);
+
+  const yDiff = arrowParams.from.y - arrowParams.to.y;
+  const xDiff = arrowParams.from.x - arrowParams.to.x;
+
+  const coeff = yDiff/xDiff;
+
+  let arrowHead = {x: arrowParams.to.x - (.5 * arrowParams.target.width), y: arrowParams.to.y - (.5 * arrowParams.target.height)};
+  if (yDiff > xDiff) {
+    arrowHead.x = arrowHead.y / coeff;
+    // arrowHead.y = arrowParams.to.y / coeff;
+  } else {
+    // arrowHead.x = arrowParams.to.x / coeff;
+    arrowHead.y = arrowHead.x / coeff;
+  }
+  console.log("arrowParams",arrowParams);
+
+
+  let temp2 = (arrowHead.x - canvasStartPoint.x) + " " + (arrowHead.y - canvasStartPoint.y) + "," +
+    (arrowHead.x - canvasStartPoint.x - 10) + " " + (arrowHead.y - canvasStartPoint.y - 10) + "," +
+    (arrowHead.x - canvasStartPoint.x + 10) + " " + (arrowHead.y - canvasStartPoint.y - 10);
   return (
     <svg
       id={id}
@@ -149,20 +170,21 @@ export default class Workflow extends React.Component<WorkflowProps, WokflowStat
             }
           })
         }
-        const params = {from:{...featureAPosition},to:{...featureBPosition}};
-        return <Arrow key={"arrow_" + index} id={"arrow_" + from + "_" + to} refz={(element: HTMLElement | null) => setRef(element, "arrow_"+from+"_"+to)} arrowParams={params} />
-      } else {
-        const featureAPosition = {
-          x: 300,
-          y: 0,
-        };
-        const featureBPosition = {
-          x: 400,
-          y: 200,
-        };
-        const params = {from:{...featureAPosition},to:{...featureBPosition}};
+        const params = {from:{...featureAPosition},to:{...featureBPosition},target:{height:toObjectProps.height,width:toObjectProps.width}};
         return <Arrow key={"arrow_" + index} id={"arrow_" + from + "_" + to} refz={(element: HTMLElement | null) => setRef(element, "arrow_"+from+"_"+to)} arrowParams={params} />
       }
+      // } else {
+      //   const featureAPosition = {
+      //     x: 300,
+      //     y: 0,
+      //   };
+      //   const featureBPosition = {
+      //     x: 400,
+      //     y: 200,
+      //   };
+      //   const params = {from:{...featureAPosition},to:{...featureBPosition}};
+      //   return <Arrow key={"arrow_" + index} id={"arrow_" + from + "_" + to} refz={(element: HTMLElement | null) => setRef(element, "arrow_"+from+"_"+to)} arrowParams={params} />
+      // }
     })
   };
   resolveTableNode(node: any): any {
