@@ -21,14 +21,15 @@ type Span = {
   width: number;
   height: number;
 };
+type arrowParams = {x: number, y: number};
 type ArrowProps = {
   id: any,
   refz: any,
-  arrowParams: {from: Point, to: Point, target: Span}
+  arrowParams: {from: Point, to: Point, target: Span, arrow: arrowParams}
 };
 let arrows: { from: any; to: string; }[] = [];
 let ids: String[] = [];
-const Arrow = ({ id, refz, arrowParams}: ArrowProps) => {
+const Arrow = ({id, refz, arrowParams}: ArrowProps) => {
   // Getting info about SVG canvas
   const canvasStartPoint = {
     x: Math.min(arrowParams.from.x - 10, arrowParams.to.x - 10),
@@ -46,17 +47,18 @@ const Arrow = ({ id, refz, arrowParams}: ArrowProps) => {
 
   const coeff = yDiff/xDiff;
 
-  let arrowHead = {x: arrowParams.to.x - (.5 * arrowParams.target.width), y: arrowParams.to.y - (.5 * arrowParams.target.height)};
-  if (yDiff > xDiff) {
-    arrowHead.x = arrowHead.y / coeff;
-    // arrowHead.y = arrowParams.to.y / coeff;
-  } else {
-    // arrowHead.x = arrowParams.to.x / coeff;
-    arrowHead.y = arrowHead.x / coeff;
-  }
-  console.log("arrowParams",arrowParams);
-
-
+  // let arrowHead = {x: arrowParams.to.x - (.5 * arrowParams.target.width), y: arrowParams.to.y - (.5 * arrowParams.target.height)};
+  let arrowHead = {x: arrowParams.arrow.x, y: arrowParams.arrow.y};
+  // if (yDiff > xDiff) {
+  //   arrowHead.x = arrowHead.y / coeff;
+  // } else {
+  //   arrowHead.y = arrowHead.x / coeff;
+  // }
+  // console.log(id,arrowParams);
+  let rise = (arrowParams.to.y - canvasStartPoint.y) - (arrowParams.from.y - canvasStartPoint.y);
+  let run = (arrowParams.to.x - canvasStartPoint.x) - (arrowParams.from.x - canvasStartPoint.x);
+  let slope = rise / run;
+  let angle = Math.atan(slope);
   let temp2 = (arrowHead.x - canvasStartPoint.x) + " " + (arrowHead.y - canvasStartPoint.y) + "," +
     (arrowHead.x - canvasStartPoint.x - 10) + " " + (arrowHead.y - canvasStartPoint.y - 10) + "," +
     (arrowHead.x - canvasStartPoint.x + 10) + " " + (arrowHead.y - canvasStartPoint.y - 10);
@@ -114,30 +116,30 @@ export default class Workflow extends React.Component<WorkflowProps, WokflowStat
   componentDidMount(): void {
     this.drawArrows({});
   };
-  resolveArrows() {
-    return Object.entries(arrows).map((arrow, index) => {
-      let from = arrow[1].from;
-      let to = arrow[1].to;
-      const fromObject = this.arrowTargets[from];
-      const fromObjectProps: { id: string, height: number, width: number, top: number, left: number } = { id: from, height: fromObject.offsetHeight, width: fromObject.offsetWidth, top: fromObject.offsetTop, left: fromObject.offsetLeft };
-      const toObject = this.arrowTargets[to];
-      const toObjectProps: { id: string, height: number, width: number, top: number, left: number } = { id: to, height: toObject.offsetHeight, width: toObject.offsetWidth, top: toObject.offsetTop, left: toObject.offsetLeft };
-      const arrowProps: { from: { id: string, height: number, width: number, top: number, left: number }, to: { id: string, height: number, width: number, top: number, left: number } } = { from: fromObjectProps, to: toObjectProps }
-      const featureAPosition = {
-        x: 300,
-        y: 0,
-      };
-      const featureBPosition = {
-        x: 400,
-        y: 200,
-      };
-      return (
-        <div key={"arrow_" + index} style={{ display: "flex", justifyContent: "space-evenly", width: "100%" }}>
-          <Xarrow key={"arrow_" + index} start={fromObject} end={toObject} color='red' headColor="red" />
-        </div>
-      );
-    })
-  };
+  // resolveArrows() {
+  //   return Object.entries(arrows).map((arrow, index) => {
+  //     let from = arrow[1].from;
+  //     let to = arrow[1].to;
+  //     const fromObject = this.arrowTargets[from];
+  //     const fromObjectProps: { id: string, height: number, width: number, top: number, left: number } = { id: from, height: fromObject.offsetHeight, width: fromObject.offsetWidth, top: fromObject.offsetTop, left: fromObject.offsetLeft };
+  //     const toObject = this.arrowTargets[to];
+  //     const toObjectProps: { id: string, height: number, width: number, top: number, left: number } = { id: to, height: toObject.offsetHeight, width: toObject.offsetWidth, top: toObject.offsetTop, left: toObject.offsetLeft };
+  //     const arrowProps: { from: { id: string, height: number, width: number, top: number, left: number }, to: { id: string, height: number, width: number, top: number, left: number } } = { from: fromObjectProps, to: toObjectProps }
+  //     const featureAPosition = {
+  //       x: 300,
+  //       y: 0,
+  //     };
+  //     const featureBPosition = {
+  //       x: 400,
+  //       y: 200,
+  //     };
+  //     return (
+  //       <div key={"arrow_" + index} style={{ display: "flex", justifyContent: "space-evenly", width: "100%" }}>
+  //         <Xarrow key={"arrow_" + index} start={fromObject} end={toObject} color='red' headColor="red" />
+  //       </div>
+  //     );
+  //   })
+  // };
   drawArrows(node: any) {
     const setRef = (element: HTMLElement | null, key: string) => {
       const temp: React.RefObject<HTMLElement> = React.createRef();
@@ -152,6 +154,7 @@ export default class Workflow extends React.Component<WorkflowProps, WokflowStat
       if (fromObject && toObject) {
         const fromObjectProps: { id: string, height: number, width: number, top: number, left: number } = { id: from, height: fromObject.offsetHeight, width: fromObject.offsetWidth, top: fromObject.offsetTop, left: fromObject.offsetLeft };
         const toObjectProps: { id: string, height: number, width: number, top: number, left: number } = { id: to, height: toObject.offsetHeight, width: toObject.offsetWidth, top: toObject.offsetTop, left: toObject.offsetLeft };
+
         const arrowProps: { from: { id: string, height: number, width: number, top: number, left: number }, to: { id: string, height: number, width: number, top: number, left: number } } = { from: fromObjectProps, to: toObjectProps }
         const featureAPosition = {
           y: fromObjectProps.top + (.5*fromObjectProps.height),
@@ -170,21 +173,61 @@ export default class Workflow extends React.Component<WorkflowProps, WokflowStat
             }
           })
         }
-        const params = {from:{...featureAPosition},to:{...featureBPosition},target:{height:toObjectProps.height,width:toObjectProps.width}};
+        let arrowPosition: {x: number, y: number} = {x: -1, y: -1};
+        let deltaX = featureAPosition.x - featureBPosition.x;
+        let deltaY = featureAPosition.y - featureBPosition.y;
+
+        let t = deltaX / deltaY;
+        //equations
+        // let x = toObjectProps.left + deltaX * t;
+        // let y = toObjectProps.top + deltaY * t;
+
+        let x0 = featureBPosition.x;//toObjectProps.left;
+        let y0 = featureBPosition.y;//toObjectProps.top;
+
+        let x1 = toObjectProps.left;
+        let y1 = toObjectProps.top + toObjectProps.height;
+
+        let x2 = toObjectProps.left + toObjectProps.width;
+        let y2 = toObjectProps.top;
+
+        let eX = deltaX > 0? x2: x1;
+        let eY = deltaY <= 0? y2: y1;
+
+        if (deltaX === 0) {
+          arrowPosition = {x: x0, y: eY};
+        } else if (deltaY === 0) {
+          arrowPosition = {x: eX, y: y0};
+        } else {
+          let tX = (eX - x0) / deltaX; //x0
+          let tY = (eY - y0) / deltaY; //y0
+          if (Math.abs(tX) <= Math.abs(tY)) { //meet vertical edge first
+            //return cx = ex, cy = y0 + tx * vy
+            // arrowPosition = {x: eX, y: y0 + (tX * deltaY)};
+            arrowPosition = {x: eX, y: y0 + (tX * deltaY)};
+          } else {
+            //return  cx = x0 + ty * vx,  cy = ey
+            arrowPosition = {x: x0 + (tY * deltaX), y: eY};
+          }
+        console.log("arrow_" + from + "_" + to, {
+          featureAPosition: featureAPosition,
+          featureBPosition: featureBPosition,
+          fromObjectProps: fromObjectProps,
+          toObjectProps: toObjectProps,
+          "deltaX, deltaY": {deltaX, deltaY},
+          "x0,y0": {x0, y0},
+          "x1,y1": {x1, y1},
+          "x2,y2": {x2, y2},
+          "eX, eY": {eX, eY},
+          "tX, tY": {tX, tY},
+          "tX <= tY": (Math.abs(tX) <= Math.abs(tY)?true:false),
+          "tY * deltaX": tY * deltaX,
+          "cX, cY": arrowPosition
+        })
+        }
+        const params = {from:{...featureAPosition},to:{...featureBPosition},target:{height:toObjectProps.height,width:toObjectProps.width},arrow:{...arrowPosition}};
         return <Arrow key={"arrow_" + index} id={"arrow_" + from + "_" + to} refz={(element: HTMLElement | null) => setRef(element, "arrow_"+from+"_"+to)} arrowParams={params} />
       }
-      // } else {
-      //   const featureAPosition = {
-      //     x: 300,
-      //     y: 0,
-      //   };
-      //   const featureBPosition = {
-      //     x: 400,
-      //     y: 200,
-      //   };
-      //   const params = {from:{...featureAPosition},to:{...featureBPosition}};
-      //   return <Arrow key={"arrow_" + index} id={"arrow_" + from + "_" + to} refz={(element: HTMLElement | null) => setRef(element, "arrow_"+from+"_"+to)} arrowParams={params} />
-      // }
     })
   };
   resolveTableNode(node: any): any {
@@ -387,17 +430,6 @@ export default class Workflow extends React.Component<WorkflowProps, WokflowStat
       } />
       {this.resolveNode(node)}
       {this.drawArrows(node)}
-      {Object.keys(this.arrowRefs).map((key) => {
-        const featureAPosition = {
-          x: this.arrowRefs[key].from.left,
-          y: this.arrowRefs[key].from.top,
-        };
-        const featureBPosition = {
-          x: this.arrowRefs[key].to.left,
-          y: this.arrowRefs[key].to.top,
-        };
-        console.log(this.arrowRefs[key]);
-      })}
     </React.Fragment>
   }
 }
