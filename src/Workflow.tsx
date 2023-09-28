@@ -29,6 +29,12 @@ type ArrowProps = {
 };
 let arrows: { from: any; to: string; }[] = [];
 let ids: String[] = [];
+const rotatePoint = (point: Point, origin: Point, angle: number) => {
+  let polar = angle / (180 / Math.PI);
+  let x = (point.x - origin.x) * Math.cos(polar) - (point.y - origin.y) * Math.sin(polar) + origin.x;
+  let y = (point.x - origin.x) * Math.sin(polar) + (point.y - origin.y) * Math.cos(polar) + origin.y;
+  return {x:x,y:y};
+}
 const Arrow = ({id, refz, arrowParams}: ArrowProps) => {
   // Getting info about SVG canvas
   const canvasStartPoint = {
@@ -46,22 +52,18 @@ const Arrow = ({id, refz, arrowParams}: ArrowProps) => {
   const xDiff = arrowParams.from.x - arrowParams.to.x;
 
   const coeff = yDiff/xDiff;
-
-  // let arrowHead = {x: arrowParams.to.x - (.5 * arrowParams.target.width), y: arrowParams.to.y - (.5 * arrowParams.target.height)};
   let arrowHead = {x: arrowParams.arrow.x, y: arrowParams.arrow.y};
-  // if (yDiff > xDiff) {
-  //   arrowHead.x = arrowHead.y / coeff;
-  // } else {
-  //   arrowHead.y = arrowHead.x / coeff;
-  // }
-  // console.log(id,arrowParams);
-  let rise = (arrowParams.to.y - canvasStartPoint.y) - (arrowParams.from.y - canvasStartPoint.y);
-  let run = (arrowParams.to.x - canvasStartPoint.x) - (arrowParams.from.x - canvasStartPoint.x);
+  let rise = (arrowParams.from.y - canvasStartPoint.y) - (arrowParams.to.y - canvasStartPoint.y);
+  let run = (arrowParams.from.x - canvasStartPoint.x) - (arrowParams.to.x - canvasStartPoint.x);
   let slope = rise / run;
-  let angle = Math.atan(slope);
+  let angle = Math.atan2(rise,run) * (180 / Math.PI); //polar to cartesian
+  const point0 = {x: arrowHead.x, y: arrowHead.y};
+  const point1 = rotatePoint({x: arrowHead.x + 10, y: arrowHead.y + 10}, point0, angle);
+  const point2 = rotatePoint({x: arrowHead.x + 10, y: arrowHead.y - 10}, point0, angle);
   let temp2 = (arrowHead.x - canvasStartPoint.x) + " " + (arrowHead.y - canvasStartPoint.y) + "," +
-    (arrowHead.x - canvasStartPoint.x - 10) + " " + (arrowHead.y - canvasStartPoint.y - 10) + "," +
-    (arrowHead.x - canvasStartPoint.x + 10) + " " + (arrowHead.y - canvasStartPoint.y - 10);
+    (point1.x - canvasStartPoint.x) + " " + (point1.y - canvasStartPoint.y) + "," +
+    (point2.x - canvasStartPoint.x) + " " + (point2.y - canvasStartPoint.y);
+    console.log(id, {rise:rise, run:run, slope:slope, angle:angle, polar: angle / (180 / Math.PI), point1: point1, point2: point2});
   return (
     <svg
       id={id}
@@ -116,30 +118,6 @@ export default class Workflow extends React.Component<WorkflowProps, WokflowStat
   componentDidMount(): void {
     this.drawArrows({});
   };
-  // resolveArrows() {
-  //   return Object.entries(arrows).map((arrow, index) => {
-  //     let from = arrow[1].from;
-  //     let to = arrow[1].to;
-  //     const fromObject = this.arrowTargets[from];
-  //     const fromObjectProps: { id: string, height: number, width: number, top: number, left: number } = { id: from, height: fromObject.offsetHeight, width: fromObject.offsetWidth, top: fromObject.offsetTop, left: fromObject.offsetLeft };
-  //     const toObject = this.arrowTargets[to];
-  //     const toObjectProps: { id: string, height: number, width: number, top: number, left: number } = { id: to, height: toObject.offsetHeight, width: toObject.offsetWidth, top: toObject.offsetTop, left: toObject.offsetLeft };
-  //     const arrowProps: { from: { id: string, height: number, width: number, top: number, left: number }, to: { id: string, height: number, width: number, top: number, left: number } } = { from: fromObjectProps, to: toObjectProps }
-  //     const featureAPosition = {
-  //       x: 300,
-  //       y: 0,
-  //     };
-  //     const featureBPosition = {
-  //       x: 400,
-  //       y: 200,
-  //     };
-  //     return (
-  //       <div key={"arrow_" + index} style={{ display: "flex", justifyContent: "space-evenly", width: "100%" }}>
-  //         <Xarrow key={"arrow_" + index} start={fromObject} end={toObject} color='red' headColor="red" />
-  //       </div>
-  //     );
-  //   })
-  // };
   drawArrows(node: any) {
     const setRef = (element: HTMLElement | null, key: string) => {
       const temp: React.RefObject<HTMLElement> = React.createRef();
@@ -209,21 +187,21 @@ export default class Workflow extends React.Component<WorkflowProps, WokflowStat
             //return  cx = x0 + ty * vx,  cy = ey
             arrowPosition = {x: x0 + (tY * deltaX), y: eY};
           }
-        console.log("arrow_" + from + "_" + to, {
-          featureAPosition: featureAPosition,
-          featureBPosition: featureBPosition,
-          fromObjectProps: fromObjectProps,
-          toObjectProps: toObjectProps,
-          "deltaX, deltaY": {deltaX, deltaY},
-          "x0,y0": {x0, y0},
-          "x1,y1": {x1, y1},
-          "x2,y2": {x2, y2},
-          "eX, eY": {eX, eY},
-          "tX, tY": {tX, tY},
-          "tX <= tY": (Math.abs(tX) <= Math.abs(tY)?true:false),
-          "tY * deltaX": tY * deltaX,
-          "cX, cY": arrowPosition
-        })
+          console.log("arrow_" + from + "_" + to, {
+            featureAPosition: featureAPosition,
+            featureBPosition: featureBPosition,
+            fromObjectProps: fromObjectProps,
+            toObjectProps: toObjectProps,
+            "deltaX, deltaY": {deltaX, deltaY},
+            "x0,y0": {x0, y0},
+            "x1,y1": {x1, y1},
+            "x2,y2": {x2, y2},
+            "eX, eY": {eX, eY},
+            "tX, tY": {tX, tY},
+            "tX <= tY": (Math.abs(tX) <= Math.abs(tY)?true:false),
+            "tY * deltaX": tY * deltaX,
+            "cX, cY": arrowPosition
+          })
         }
         const params = {from:{...featureAPosition},to:{...featureBPosition},target:{height:toObjectProps.height,width:toObjectProps.width},arrow:{...arrowPosition}};
         return <Arrow key={"arrow_" + index} id={"arrow_" + from + "_" + to} refz={(element: HTMLElement | null) => setRef(element, "arrow_"+from+"_"+to)} arrowParams={params} />
