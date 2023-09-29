@@ -317,6 +317,197 @@
 		"nodeType": "display",
 		"next": "",
 		"objects": [
+			{
+				"id":"start",
+				"type":"node",
+				"next":[""],
+				"level":"white",
+				"objects": [
+					{"type":"label","value":"STANDARD"},
+					{"type":"label","value":"Domestic violence is physical, sexual, or psychological abuse and/or intimidation, which attempts to control another person in a current or former family, dating, or household relationship. Elder abuse is the physical and/or mental injury, sexual abuse, negligent treatment, exploitation, or maltreatment of a senior citizen by another person. Abuse may be at the hand of a caregiver, spouse, neighbor, or adult child of the patient. The recognition, appropriate reporting, and referral of abuse is a critical step to improving patient safety, providing quality health care, and preventing further abuse. For patients <18 years old refer to Child Abuse Recognition and Reporting (< 18 years of age) standard."}
+				]
+			},
+			{
+				"id":"purpose",
+				"type":"node",
+				"next":[""],
+				"level":"white",
+				"objects": [
+					{"type":"label","value":"PURPOSE"},
+					{"type":"label","value":"Assessment of an abuse case is based upon the following principles:"},
+					{"type":"list","objects":[
+						{"type":"label","value":"Protect the patient from harm."},
+						{"type":"label","value":"Suspect that the patient may be a victim of abuse, especially if the injury/illness is not consistent with the reported history."},
+						{"type":"label","value":"Respect the privacy of the patient and family."},
+						{"type":"label","value":"Collect and document as much information as possible."},
+						{"type":"label","value":"Reporting suspected abuse to appropriate authorities."}
+					]}
+				]
+			},
+			{
+				"id":"application",
+				"type":"node",
+				"next":[""],
+				"level":"white",
+				"objects": [
+					{"type":"label","value":"APPLICATION"},
+					{"type":"list","objects":[
+						{"type":"label","value":"Assess all patients for any psychological characteristics of abuse, including excessive passivity, compliant or fearful behavior, excessive aggression, violent tendencies, excessive crying, behavioral disorders, substance abuse, medical non-compliance, or repeated EMS requests. This is typically best done in private with the patient."},
+						{"type":"label","value":"Assess all patients for any physical signs of abuse, especially any injuries that are inconsistent with the reported mechanism of injury. Defensive injuries (e.g. to forearms), and injuries during pregnancy are also suggestive of abuse. Injuries in different stages of healing may indicate repeated episodes of violence."},
+						{"type":"label","value":"Assess all patients for signs and symptoms of neglect, including inappropriate level of clothing for weather, inadequate hygiene, absence of attentive caregiver(s), or physical signs of malnutrition."},
+						{"type":"label","value":"EMS providers are required to immediately report any suspicious findings to the County’s Adult Protective Services (APS) or local law enforcement. This should occur as soon as reasonably possible before leaving the scene (if patient refuses) or at the hospital after patient transfer is completed. Providers may need to request a brief “out of service time” for this process to be completed. Notification of APS or law enforcement should be documented in the patient’s run report. Documentation should include the name of the person (and badge number if law enforcement notified), as well of the time and date of such notification. If the patient is transported the hospital; the RN/MD receiving report should be advised of the conditions/situation the patient was found in."}
+					]}
+				]
+			},
+			{
+				"id":"familyViolenceScreening",
+				"type":"node",
+				"next":[""],
+				"level":"white",
+				"objects": [
+					{"type":"link","value":"Family Violence Screening","target":"familyViolenceScreening"}
+				]
+			},
+			{
+				"id":"presents",
+				"type":"node",
+				"next":["determine"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"Presents to EMS"}
+				]
+			},
+			{
+				"id":"determine",
+				"type":"node",
+				"next":["inform"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"Determine & treat injuries"},
+					{"type":"label","value":"Observe home conditions"}
+				]
+			},
+			{
+				"id":"inform",
+				"type":"node",
+				"next":["notify"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"Inform patient that law enforcement may be notified and screen in private."},
+					{"type":"label","value":"(Can be done en route to hospital)"}
+				]
+			},
+			{
+				"id":"notify",
+				"type":"node",
+				"next":["identifies","denies"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"Notify Law Enforcement if:"},
+					{"type":"list","objects":[
+						{"type":"label","value":"Requested by patient"},
+						{"type":"label","value":"Felonious act has occurred such as, second or third degree burns, gunshot, stabbing or serious physical injuries (see definition)"}
+					]}
+				]
+			},
+			{
+				"id":"identifies",
+				"type":"node",
+				"next":["encourage"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"Patient identifies self as abused"},
+					{"type":"label","value":"Reported incident is consistent with abuse"},
+					{"type":"label","value":"Obvious signs or symptoms are consistent with abuse."}
+				]
+			},
+			{
+				"id":"suspected",
+				"type":"node",
+				"next":["encourage"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"Patient denies abuse, but abuse is suspected due to:"},
+					{"type":"list","objects":[
+						{"type":"label","value":"Signs and symptoms consistent with family violence (see protocol)"}
+					]}
+				]
+			},
+			{
+				"id":"denies",
+				"type":"node",
+				"next":["provide"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"Patient denies abuse:"},
+					{"type":"label","value":"No identifying factors"}
+				]
+			},
+			{
+				"id":"encourage",
+				"type":"node",
+				"next":["accepts","declines"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"Encourage transport to the hospital for evaluation"}
+				]
+			},
+			{
+				"id":"accepts",
+				"type":"node",
+				"next":["provide"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"Patient accepts transport to hospital"}
+				]
+			},
+			{
+				"id":"declines",
+				"type":"node",
+				"next":["stay"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"Patient declines transport to hospital"}
+				]
+			},
+			{
+				"id":"stay",
+				"type":"node",
+				"next":["provide"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"If law enforcement notified, stay with patient until their arrival"}
+				]
+			},
+			{
+				"id":"provide",
+				"type":"node",
+				"next":["report","document"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"Provide Community Resource Information"}
+				]
+			},
+			{
+				"id":"report",
+				"type":"node",
+				"next":["document"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"Give report to RN / MD at hospital"}
+				]
+			},
+			{
+				"id":"document",
+				"type":"node",
+				"next":[],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"Document screen was done"},
+					{"type":"label","value":"If unable to complete, document reason why."},
+					{"type":"label","value":"Report suspected abuse to Adult Protective Services."}
+				]
+			},
 			{"type":"back","value":"Back"}
 		]
 	},
