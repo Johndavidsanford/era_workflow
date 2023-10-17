@@ -1,7 +1,7 @@
 import React from 'react';
-import Workflow from './Workflow';
+import Workflow from './components/Workflow';
 
-import './App.css';
+import './styles/App.css';
 
 function App() {
   return (<Workflow />);
