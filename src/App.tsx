@@ -9,10 +9,8 @@ function App() {
   console.log(queryParameters.keys);
   return (
     <div>
-      {/* <p>Name: {name}</p> */}
       <Workflow workflowKey={name} />
     </div>
-  // return (<Workflow />);
   )
 }
 export default App;

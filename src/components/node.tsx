@@ -88,18 +88,42 @@ export default class Node extends React.Component<NodeProps, NodeState> {
                                 </tbody></table>)
                             case "link":
                                 return (<input key={key2} type="button" value={node[key][key2].value} onClick={() => {
+                                    console.log("target",node[key][key2].target);
+                                    let target = node[key][key2].target;
+                                        console.log("conditionalTarget",node[key][key2].conditionalTarget);
+                                    if (node[key][key2].conditionalTarget) {
+                                            console.log("conditionalParameter",node[key][key2].conditionalParameter);
+                                        if (node[key][key2].conditionalParameter==="age") {
+                                                console.log("condition",node[key][key2].condition);
+                                            if (node[key][key2].condition === "<") {
+                                                console.log("this.props.patient.age",this.props.patient.age);
+                                                console.log("conditionalValue",node[key][key2].conditionalValue);
+                                                console.log("<",this.props.patient.age < node[key][key2].conditionalValue);
+                                                console.log("conditionalTarget",node[key][key2].conditionalTarget);
+                                                target = this.props.patient.age < node[key][key2].conditionalValue?node[key][key2].conditionalTarget:target;
+                                            } else { // greater than
+                                                target = this.props.patient.age > node[key][key2].conditionalValue?node[key][key2].conditionalTarget:target;
+                                            }
+                                        } else { //weight
+                                            if (node[key][key2].condition === "<") {
+                                                target = this.props.patient.weight < node[key][key2].conditionalValue?node[key][key2].conditionalTarget:target;
+                                            } else { // greater than
+                                                target = this.props.patient.weight > node[key][key2].conditionalValue?node[key][key2].conditionalTarget:target;
+                                            }
+                                        }
+                                    }
                                     this.setState(
                                         {
                                             timestamps: {
                                                 ...this.state.timestamps,
                                                 workflowKey: new Date()
                                             },
-                                            workflowKey: node[key][key2].target,
+                                            workflowKey: target,
                                             node: this.props.workflow[node[key][key2].target] // as keyof typeof this.props.workflow
                                         }
                                     );
                                     window.location.href = "/workflow?name=" + node[key][key2].target;
-                                } } />)
+                                }} />)
                         }
                     }))
                 default:
@@ -166,21 +190,37 @@ export default class Node extends React.Component<NodeProps, NodeState> {
                                         return this.resolveNode(node[key][key2])
                                     case "link":
                                         return (<input key={key2} type="button" value={node[key][key2].value} onClick={() => {
+                                            let target = node[key][key2].target;
+                                            if (node[key][key2].conditionalTarget) {
+                                                if (node[key][key2].conditionalParameter==="age") {
+                                                    if (node[key][key2].condition === "<") {
+                                                        target = this.props.patient.age < node[key][key2].conditionalValue?node[key][key2].conditionalTarget:target;
+                                                    } else { // greater than
+                                                        target = this.props.patient.age > node[key][key2].conditionalValue?node[key][key2].conditionalTarget:target;
+                                                    }
+                                                } else { //weight
+                                                    if (node[key][key2].condition === "<") {
+                                                        target = this.props.patient.weight < node[key][key2].conditionalValue?node[key][key2].conditionalTarget:target;
+                                                    } else { // greater than
+                                                        target = this.props.patient.weight > node[key][key2].conditionalValue?node[key][key2].conditionalTarget:target;
+                                                    }
+                                                }
+                                            }
                                             this.setState(
                                                 {
                                                     timestamps: {
                                                         ...this.state.timestamps,
                                                         workflowKey: new Date()
                                                     },
-                                                    workflowKey: node[key][key2].target,
+                                                    workflowKey: target,
                                                     node: this.props.workflow[node[key][key2].target] // as keyof typeof this.props.workflow
                                                 }
                                             );
-                                            window.location.href = "/workflow?name=" + node[key][key2].target;
+                                            window.location.href = "/workflow?name=" + target;
                                         }} />)
                                     case "next":
                                         return (<input key={key2} type="button" value={node[key][key2].value} onClick={() => {
-                                            if (this.state.patient.age && this.state.patient.weight) {
+                                            // if (this.state.patient.age && this.state.patient.weight) {
                                                 this.setState(
                                                     {
                                                         timestamps: {
@@ -191,14 +231,14 @@ export default class Node extends React.Component<NodeProps, NodeState> {
                                                         node: this.props.workflow[node.next] // as keyof typeof this.props.workflow
                                                     }
                                                 );
-                                            } else {
-                                                alert("Patient Age and Weight are required!");
-                                            }
+                                            // } else {
+                                            //     alert("Patient Age and Weight are required!");
+                                            // }
                                         }
                                         } />)
                                     case "back":
                                         return (<input key={key2} type="button" className="back" value={node[key][key2].value} onClick={() => {
-                                            if (this.state.patient.age && this.state.patient.weight) {
+                                            // if (this.state.patient.age && this.state.patient.weight) {
                                                 this.setState(
                                                     {
                                                         timestamps: {
@@ -209,9 +249,10 @@ export default class Node extends React.Component<NodeProps, NodeState> {
                                                         node: this.props.workflow["universalPatientAssessment"] // as keyof typeof this.props.workflow
                                                     }
                                                 );
-                                            } else {
-                                                alert("Patient Age and Weight are required!");
-                                            }
+                                                window.location.href = "/workflow?name=";
+                                            // } else {
+                                            //     alert("Patient Age and Weight are required!");
+                                            // }
                                         }
                                         } />)
                                 }
