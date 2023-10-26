@@ -98,8 +98,8 @@ export default class Node extends React.Component<NodeProps, NodeState> {
                                             node: this.props.workflow[node[key][key2].target] // as keyof typeof this.props.workflow
                                         }
                                     );
-                                }
-                                } />)
+                                    window.location.href = "/workflow?name=" + node[key][key2].target;
+                                } } />)
                         }
                     }))
                 default:
@@ -176,8 +176,8 @@ export default class Node extends React.Component<NodeProps, NodeState> {
                                                     node: this.props.workflow[node[key][key2].target] // as keyof typeof this.props.workflow
                                                 }
                                             );
-                                        }
-                                        } />)
+                                            window.location.href = "/workflow?name=" + node[key][key2].target;
+                                        }} />)
                                     case "next":
                                         return (<input key={key2} type="button" value={node[key][key2].value} onClick={() => {
                                             if (this.state.patient.age && this.state.patient.weight) {

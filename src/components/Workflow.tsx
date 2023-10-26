@@ -2,10 +2,11 @@ import React, { createRef, useRef } from 'react';
 import workflow from '../workflow.json';
 import Node from './node';
 import '../styles/App.css';
-import Xarrow from "react-xarrows";
 import Arrows from './arrows';
 
-export interface WorkflowProps { };
+export interface WorkflowProps {
+  workflowKey: string | null
+ };
 export interface WokflowState {
   timestamps: any,
   workflowKey: string,
@@ -38,7 +39,7 @@ export default class Workflow extends React.Component<WorkflowProps, WokflowStat
     super(props);
     this.state = {
       timestamps: {},
-      workflowKey: "abdominalPain",
+      workflowKey: this.props.workflowKey?this.props.workflowKey:"universalPatientAssessment",
       patient: {
         weight: undefined,
         age: undefined
@@ -58,7 +59,6 @@ export default class Workflow extends React.Component<WorkflowProps, WokflowStat
     }
   };
   render() {
-    const arrowTargets = arrows;
     return <React.Fragment>
       <input type="text" key="age" id="age" placeholder="Patient Age" onBlur={(value) => {
         arrowKey++;
