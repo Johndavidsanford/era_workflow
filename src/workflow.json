@@ -6,7 +6,7 @@
 		"next": "conditionList",
 		"objects": [
 			{"type":"link","value":"Abdominal Pain","target":"abdominalPain"},
-			{"type":"link","value":"Abuse","target":"abuse"},
+			{"type":"link","value":"Abuse","target":"abuse","conditionalTarget":"pediatricChildAbuse","conditionalParameter":"age","condition":"<","conditionalValue":19},
 			{"type":"link","value":"Acute Stroke","target":"acuteStroke"},
 			{"type":"link","value":"Air Medical Transport","target":"airMedicalTransport"},
 			{"type":"link","value":"Allergic Reaction","target":"allergicReaction"},
@@ -506,6 +506,126 @@
 					{"type":"label","value":"Document screen was done"},
 					{"type":"label","value":"If unable to complete, document reason why."},
 					{"type":"label","value":"Report suspected abuse to Adult Protective Services."}
+				]
+			},
+			{"type":"back","value":"Back"}
+		]
+	},
+	"pediatricChildAbuse": {
+		"title": "Pediatric Child Abuse",
+		"subtitle": "",
+		"nodeType": "display",
+		"next": "",
+		"objects": [
+			{
+				"id":"start",
+				"type":"node",
+				"next":["spinalInjuryAssessment"],
+				"level":"grey",
+				"objects": [
+					{"type":"link","value":"Universal Patient Assessment","target":"universalPatientAssessment"}
+				]
+			},
+			{
+				"id":"spinalInjuryAssessment",
+				"type":"node",
+				"next":["treat"],
+				"level":"red",
+				"objects": [
+					{"type":"link","value":"Spinal Injury Assessment","target":"spinalInjuryAssessment"}
+				]
+			},
+			{
+				"id":"treat",
+				"type":"node",
+				"next":["remove"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"Treat per appropriate protocol"}
+				]
+			},
+			{
+				"id":"remove",
+				"type":"node",
+				"next":["stay"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"Remove the child from the scene as soon as possible. Avoid pressing for detailed history of the event."}
+				]
+			},
+			{
+				"id":"stay",
+				"type":"node",
+				"next":["report"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"If patient's condition allows, do not leave until Police arrive. EMS should report even if taken to Nationwide Children's Hospital.  Law enforcement should be called to the scene if the parents or other caregiver refuse transport after it has been deemed necessary by the Medic crew."},
+					{"type":"link","value":"Child Abuse Clinical Standards","target":"childAbuseClinicalStandards"}
+				]
+			},
+			{
+				"id":"report",
+				"type":"node",
+				"next":["administer"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"Report and carefully document ALL suspected cases of child abuse. Documentation should include size, shape, color, degree of healing, and location of each injury."}
+				]
+			},
+			{
+				"id":"administer",
+				"type":"node",
+				"next":["trauma"],
+				"level":"yellow",
+				"objects": [
+					{"type":"label","value":"If indicated"},
+					{"type":"label","value":"Pediatric IV/IO"}
+				]
+			},
+			{
+				"id":"trauma",
+				"type":"node",
+				"next":["identify"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"(If indicated)"},
+					{"type":"link","value":"Pediatric Trauma Specific Protocol","target":"pediatricTraumaSpecificProtocol"}
+				]
+			},
+			{
+				"id":"identify",
+				"type":"node",
+				"next":["transport"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"Identify individual county resources for child protective services."}
+				]
+			},
+			{
+				"id":"transport",
+				"type":"node",
+				"next":["transport"],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"These children should be transported to Nationwide Children's Hospital if at all possible. If the child is unstable due to injury, transport to the closest appropriate hospital."}
+				]
+			},
+			{
+				"id":"transport",
+				"type":"node",
+				"next":[""],
+				"level":"grey",
+				"objects": [
+					{"type":"label","value":"Children's Services should be notified on all cases of suspected abuse."},
+					{"type":"link","value":"Phone Numbers","target":"phoneNumbers"},
+					{"type":"label","value":"Child abuse should be suspected when any of the following exist:"},
+					{"type":"list","objects":[
+						{"type":"label","value":"History is inconsistent with the extent of injury or developmental age."},
+						{"type":"label","value":"The injury reflects an outline of an object or mode of infliction"},
+						{"type":"label","value":"There is a delay in seeking medical attention."},
+						{"type":"label","value":"There are other unexplained injuries in various stages of healing."},
+						{"type":"label","value":"The explanation seems vague or confused."}
+					]}
 				]
 			},
 			{"type":"back","value":"Back"}

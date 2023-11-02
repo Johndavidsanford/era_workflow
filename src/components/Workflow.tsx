@@ -66,7 +66,7 @@ export default class Workflow extends React.Component<WorkflowProps, WokflowStat
           {
             patient: {
               ...this.state.patient,
-              age: value
+              age: value.target.value
             },
           }
         );
@@ -78,7 +78,7 @@ export default class Workflow extends React.Component<WorkflowProps, WokflowStat
           {
             patient: {
               ...this.state.patient,
-              weight: value
+              weight: value.target.value
             },
           }
         );
